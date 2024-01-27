@@ -56,4 +56,32 @@
 	{% endfor %}
   </tr>
 </table>
+
+<hr>
+<caption>Total spendings: {{ total_amount|floatformat:2 }}</caption>
+
+<hr>
+<table border="1">
+	<caption>Summary per year-month</caption>
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in year_month_summary %}
+        <tr>
+            <td>{{ entry.year }}</td>
+            <td>{{ entry.month }}</td>
+            <td>{{ entry.total_amount|floatformat:2 }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No expenses found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
